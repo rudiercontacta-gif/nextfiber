@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextFiber | Internet y TV por Fibra Óptica en Cusco y Puerto Maldonado</title>
+<link rel="icon" type="image/jpeg" href="images/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <span>📞 Ventas: <a href="tel:+51945835216"><b>945 835 216</b></a></span>
+      <span>🎧 Soporte: <a href="tel:+51902175702"><b>902 175 702</b></a></span>
+      <span class="tb-address">📍 San Sebastián, Cusco</span>
+    </div>
+    <div class="tb-right">
+      <span>Lun–Vie 8:00–18:00 · Sáb 8:00–14:00</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap nav">
+    <a href="#" class="logo" aria-label="NextFiber - inicio">
+      <img src="images/logo-nextfiber.jpg" alt="NextFiber - Internet y TV por Fibra Óptica">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio" class="active">Inicio</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#registro">Regístrate</a></li>
+      <li><a href="#tv">TV Digital</a></li>
+      <li><a href="#cobertura">Cobertura</a></li>
+      <li><a href="#pagos">Pagos</a></li>
+      <li><a href="#soporte">Soporte</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#planes" id="contrataYaFallback" class="btn btn-liquid btn-sm">¡Contrata ya!</a>
+      <span
+        id="contrataYaWidget"
+        data-liquid-button
+        data-label="¡Contrata ya!"
+        data-href="#planes"
+        data-fallback-id="contrataYaFallback"
+        style="display:none;"
+      ></span>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-carousel" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('images/hero-slide-1.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/hero-slide-2.jpg')"></div>
+    <!-- Diapositiva 3 = TV/fútbol (futbolistas) · Diapositiva 4 = empresas (técnicos) -->
+    <div class="hero-slide" style="background-image:url('images/hero-slide-4.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/hero-slide-3.jpg')"></div>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+
+  <div class="wrap hero-inner">
+    <!-- Los 4 textos del carrusel ocupan la misma celda: el bloque siempre mide
+         lo que el texto más largo, así el formulario de abajo no se mueve. -->
+    <div class="hero-copy">
+      <div class="hero-variant active" data-slide="0">
+        <span class="eyebrow">Cusco · Puerto Maldonado</span>
+        <h1>La fibra que une la <em>cordillera</em> y la <em>selva</em>.</h1>
+        <p class="lead">Internet y TV digital 100% por fibra óptica real, con tecnología GPON, velocidad simétrica y soporte local. Sin cortes, sin excusas.</p>
+      </div>
+      <div class="hero-variant" data-slide="1" aria-hidden="true">
+        <span class="eyebrow">Planes residenciales</span>
+        <p class="hero-title">Internet para <em>toda la familia</em>, sin cortes.</p>
+        <p class="lead">Trabaja, estudia y transmite en varias pantallas a la vez con velocidad simétrica y WiFi de alto alcance en cada rincón de tu casa.</p>
+      </div>
+      <div class="hero-variant" data-slide="2" aria-hidden="true">
+        <span class="eyebrow">TV Digital · Liga 1 MAX</span>
+        <p class="hero-title">Tu <em>fútbol</em> y tus series, sin cambiar de red.</p>
+        <p class="lead">Los planes con TV digital incluyen Liga 1 MAX y corren sobre la misma fibra que tu internet: misma velocidad, mismo soporte.</p>
+      </div>
+      <div class="hero-variant" data-slide="3" aria-hidden="true">
+        <span class="eyebrow">MYPE y empresas</span>
+        <p class="hero-title">Internet dedicado para tu <em>negocio</em>.</p>
+        <p class="lead">Velocidad simétrica dedicada, soporte prioritario e IP fija para que tu empresa esté siempre conectada, sin interrupciones.</p>
+      </div>
+    </div>
+    <form class="check-form" data-lead-form="verificador_hero" id="heroCheckForm">
+      <select name="departamento" aria-label="Departamento" required>
+        <option value="" selected disabled>Departamento</option>
+        <option value="Cusco">Cusco</option>
+        <option value="Madre de Dios">Madre de Dios</option>
+      </select>
+      <input type="text" name="direccion" placeholder="Ingresa tu distrito" aria-label="Distrito" autocomplete="off" maxlength="120" required>
+      <input type="tel" name="telefono" placeholder="Tu WhatsApp" aria-label="Celular o WhatsApp" autocomplete="tel-national" inputmode="tel" maxlength="20" required>
+      <div class="hp" aria-hidden="true"><label>No completes este campo <input type="text" name="sitio_web" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn btn-lime btn-liquid btn-3d" id="verificarDispoFallback" data-hover-text="Ver mi cobertura" type="submit">Verificar disponibilidad</button>
+      <span data-moving-border-button data-label="Verificar disponibilidad" data-form-id="heroCheckForm" data-fallback-id="verificarDispoFallback"></span>
+    </form>
+    <p class="hero-sub">¿No sabes qué plan elegir? <a href="#planes">Compara nuestros planes ↓</a></p>
+  </div>
+
+  <div class="hero-dots" role="tablist" aria-label="Diapositivas destacadas">
+    <button class="dot active" data-slide="0" aria-label="Diapositiva 1"></button>
+    <button class="dot" data-slide="1" aria-label="Diapositiva 2"></button>
+    <button class="dot" data-slide="2" aria-label="Diapositiva 3"></button>
+    <button class="dot" data-slide="3" aria-label="Diapositiva 4"></button>
+  </div>
+</section>
+
+<div class="statstrip reveal">
+  <div class="stat-marquee">
+    <div class="stat-track">
+      <div class="stat-card">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8Z" stroke="#b6ff3c" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="stat-text"><div class="stat-value">1 Gbps</div><div class="stat-label">velocidad máxima disponible</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 8.5C8 3 16 3 22 8.5M5.5 12C9.5 8.3 14.5 8.3 18.5 12M9 15.5C10.7 14 13.3 14 15 15.5" stroke="#b6ff3c" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="19" r="1.4" fill="#b6ff3c"/></svg></div>
+        <div class="stat-text"><div class="stat-value">100%</div><div class="stat-label">fibra óptica hasta tu casa (FTTH)</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#b6ff3c" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="#b6ff3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="stat-text"><div class="stat-value">24h</div><div class="stat-label">instalación rápida promedio</div></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 13v-1a8 8 0 0 1 16 0v1" stroke="#b6ff3c" stroke-width="1.8" stroke-linecap="round"/><rect x="2.5" y="13" width="4" height="6" rx="1.5" stroke="#b6ff3c" stroke-width="1.8"/><rect x="17.5" y="13" width="4" height="6" rx="1.5" stroke="#b6ff3c" stroke-width="1.8"/></svg></div>
+        <div class="stat-text"><div class="stat-value">6/7</div><div class="stat-label">días de soporte técnico en español</div></div>
+      </div>
+      <!-- Set duplicado para que el desplazamiento sea infinito y sin cortes -->
+      <div class="stat-card" aria-hidden="true">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8Z" stroke="#b6ff3c" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="stat-text"><div class="stat-value">1 Gbps</div><div class="stat-label">velocidad máxima disponible</div></div>
+      </div>
+      <div class="stat-card" aria-hidden="true">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M2 8.5C8 3 16 3 22 8.5M5.5 12C9.5 8.3 14.5 8.3 18.5 12M9 15.5C10.7 14 13.3 14 15 15.5" stroke="#b6ff3c" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="19" r="1.4" fill="#b6ff3c"/></svg></div>
+        <div class="stat-text"><div class="stat-value">100%</div><div class="stat-label">fibra óptica hasta tu casa (FTTH)</div></div>
+      </div>
+      <div class="stat-card" aria-hidden="true">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#b6ff3c" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="#b6ff3c" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="stat-text"><div class="stat-value">24h</div><div class="stat-label">instalación rápida promedio</div></div>
+      </div>
+      <div class="stat-card" aria-hidden="true">
+        <div class="stat-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 13v-1a8 8 0 0 1 16 0v1" stroke="#b6ff3c" stroke-width="1.8" stroke-linecap="round"/><rect x="2.5" y="13" width="4" height="6" rx="1.5" stroke="#b6ff3c" stroke-width="1.8"/><rect x="17.5" y="13" width="4" height="6" rx="1.5" stroke="#b6ff3c" stroke-width="1.8"/></svg></div>
+        <div class="stat-text"><div class="stat-value">6/7</div><div class="stat-label">días de soporte técnico en español</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PLANES -->
+<section id="planes">
+
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Planes residenciales</span>
+      <h2>Un plan para cada forma de conectarte.</h2>
+    </div>
+    <p class="plans-note reveal">Todos los planes incluyen fibra óptica hasta tu hogar (FTTH), router WiFi e instalación. Los planes con TV digital traen <b>Liga 1 MAX</b> y navegan a <b>1 Gbps</b> tus primeros 6 meses.</p>
+
+    <div class="plans-grid">
+      <div class="plan-card reveal">
+        <div class="plan-tier">Start</div>
+        <div class="plan-name">Internet puro</div>
+        <div class="plan-speed"><b>200</b><span>Mbps</span></div>
+        <div class="plan-up">↑ 200 Mbps de subida</div>
+        <div class="plan-bar"><span style="width:25%"></span></div>
+        <div class="plan-price">S/ 65 <span>/mes</span></div>
+        <ul class="plan-includes">
+          <li>Internet ilimitado</li>
+          <li>Velocidad simétrica</li>
+          <li>Router WiFi incluido</li>
+          <li>Instalación incluida</li>
+          <li>Ideal para 1–4 dispositivos</li>
+        </ul>
+        <a href="#registro" class="btn btn-outline btn-block" data-plan="Start" aria-label="Quiero el plan Start">¡Lo quiero!</a>
+        <div class="glare-fx" aria-hidden="true"><span class="glare-shine"></span><span class="glare-foil"></span></div>
+      </div>
+
+      <div class="plan-card reveal">
+        <span class="promo-badge">👑 1 GBPS × 6 MESES</span>
+        <div class="plan-tier">Familiar + TV</div>
+        <div class="plan-name">Para toda la casa</div>
+        <div class="plan-speed"><b>300</b><span>Mbps</span></div>
+        <div class="plan-up">↑ 300 Mbps de subida</div>
+        <div class="plan-bar"><span style="width:37%"></span></div>
+        <div class="plan-price">S/ 79.90 <span>/mes</span></div>
+        <ul class="plan-includes">
+          <li>1 Gbps tus primeros 6 meses</li>
+          <li>Incluye Liga 1 MAX</li>
+          <li>TV Digital HD incluida</li>
+          <li>Internet ilimitado y simétrico</li>
+          <li>Router WiFi incluido</li>
+        </ul>
+        <a href="#registro" class="btn btn-outline btn-block" data-plan="Familiar + TV" aria-label="Quiero el plan Familiar + TV">¡Lo quiero!</a>
+        <div class="glare-fx" aria-hidden="true"><span class="glare-shine"></span><span class="glare-foil"></span></div>
+      </div>
+
+      <div class="plan-card featured reveal">
+        <span class="star-badge">★ El más elegido</span>
+        <span class="promo-badge">👑 1 GBPS × 6 MESES</span>
+        <div class="plan-tier">Pro + TV</div>
+        <div class="plan-name">Streaming y gaming</div>
+        <div class="plan-speed"><b>400</b><span>Mbps</span></div>
+        <div class="plan-up">↑ 400 Mbps de subida</div>
+        <div class="plan-bar"><span style="width:50%"></span></div>
+        <div class="plan-price">S/ 99.90 <span>/mes</span></div>
+        <ul class="plan-includes">
+          <li>1 Gbps tus primeros 6 meses</li>
+          <li>Incluye Liga 1 MAX</li>
+          <li>TV Digital HD incluida</li>
+          <li>Internet ilimitado</li>
+          <li>Router WiFi de alto alcance</li>
+          <li>Streaming 4K y gaming</li>
+        </ul>
+        <a href="#registro" class="btn btn-lime btn-liquid btn-block" id="loQuieroProFallback" data-plan="Pro + TV" aria-label="Quiero el plan Pro + TV">¡Lo quiero!</a>
+        <span data-moving-border-button data-label="¡Lo quiero!" data-href="#registro" data-plan="Pro + TV" data-block="true" data-fallback-id="loQuieroProFallback"></span>
+        <div class="glare-fx" aria-hidden="true"><span class="glare-shine"></span><span class="glare-foil"></span></div>
+      </div>
+
+      <div class="plan-card reveal">
+        <span class="promo-badge">👑 1 GBPS × 6 MESES</span>
+        <div class="plan-tier">Ultra + TV</div>
+        <div class="plan-name">Home office sin límites</div>
+        <div class="plan-speed"><b>600</b><span>Mbps</span></div>
+        <div class="plan-up">↑ 600 Mbps de subida</div>
+        <div class="plan-bar"><span style="width:75%"></span></div>
+        <div class="plan-price">S/ 120 <span>/mes</span></div>
+        <ul class="plan-includes">
+          <li>1 Gbps tus primeros 6 meses</li>
+          <li>Incluye Liga 1 MAX</li>
+          <li>TV Digital HD incluida</li>
+          <li>Internet ilimitado</li>
+          <li>Router WiFi de alto alcance</li>
+          <li>Home office sin límites</li>
+        </ul>
+        <a href="#registro" class="btn btn-outline btn-block" data-plan="Ultra + TV" aria-label="Quiero el plan Ultra + TV">¡Lo quiero!</a>
+        <div class="glare-fx" aria-hidden="true"><span class="glare-shine"></span><span class="glare-foil"></span></div>
+      </div>
+
+      <div class="plan-card reveal">
+        <span class="promo-badge">👑 1 GBPS × 6 MESES</span>
+        <div class="plan-tier">Max + TV</div>
+        <div class="plan-name">Máximo rendimiento</div>
+        <div class="plan-speed"><b>800</b><span>Mbps</span></div>
+        <div class="plan-up">↑ 800 Mbps de subida</div>
+        <div class="plan-bar"><span style="width:100%"></span></div>
+        <div class="plan-price">S/ 150 <span>/mes</span></div>
+        <ul class="plan-includes">
+          <li>1 Gbps tus primeros 6 meses</li>
+          <li>Incluye Liga 1 MAX</li>
+          <li>TV Digital HD incluida</li>
+          <li>Internet ilimitado</li>
+          <li>Router WiFi de alto alcance</li>
+          <li>Máximo rendimiento total</li>
+        </ul>
+        <a href="#registro" class="btn btn-outline btn-block" data-plan="Max + TV" aria-label="Quiero el plan Max + TV">¡Lo quiero!</a>
+        <div class="glare-fx" aria-hidden="true"><span class="glare-shine"></span><span class="glare-foil"></span></div>
+      </div>
+    </div>
+
+    <p class="plans-footnote">* Precios incluyen impuestos. La promoción de 1 Gbps aplica durante los primeros 6 meses en los planes con TV digital; luego el servicio continúa a la velocidad contratada. Liga 1 MAX incluido en los planes con TV — somos distribuidor autorizado. Consulta condiciones por WhatsApp.</p>
+  </div>
+</section>
+
+<!-- REGISTRO DE CLIENTES -->
+<section id="registro" class="reg-section">
+  <div class="reg-orb reg-orb-a" aria-hidden="true"></div>
+  <div class="reg-orb reg-orb-b" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="reg-box reveal">
+      <div class="reg-copy">
+        <span class="eyebrow">Regístrate</span>
+        <h2>Déjanos tus datos y activamos tu servicio.</h2>
+        <p>Completa el formulario y un asesor de NextFiber te contacta para coordinar la instalación. Tus datos quedan guardados de forma segura en nuestra base de clientes.</p>
+
+        <div class="reg-visual" aria-hidden="true">
+          <div class="reg-signal">
+            <span class="reg-ring r1"></span>
+            <span class="reg-ring r2"></span>
+            <span class="reg-ring r3"></span>
+            <span class="reg-signal-core">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 20h.01M8.5 16.5a5 5 0 0 1 7 0M5 13a10 10 0 0 1 14 0" stroke="#180a2c" stroke-width="2.2" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+          <div class="reg-visual-text">
+            <strong>100% fibra óptica</strong>
+            <span>Conexión estable desde el primer día</span>
+          </div>
+        </div>
+
+        <ul class="reg-points">
+          <li>
+            <span class="reg-point-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#6d28d9" stroke-width="2"/></svg>
+            </span>
+            <div><strong>Respuesta en menos de 24 horas</strong><span>Un asesor te escribe rápido, sin esperas largas</span></div>
+          </li>
+          <li>
+            <span class="reg-point-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="#6d28d9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="#6d28d9" stroke-width="2"/></svg>
+            </span>
+            <div><strong>Sin costo por cotizar</strong><span>La evaluación de tu dirección es totalmente gratis</span></div>
+          </li>
+          <li>
+            <span class="reg-point-ico">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z" stroke="#6d28d9" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#6d28d9" stroke-width="2"/></svg>
+            </span>
+            <div><strong>Atención en Cusco y Puerto Maldonado</strong><span>Cobertura local con soporte técnico cercano</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reg-form-wrap">
+        <div class="reg-progress" aria-hidden="true">
+          <div class="reg-progress-bar" id="regProgressBar"></div>
+        </div>
+        <form class="reg-form" data-lead-form="registro" id="regForm">
+          <div class="reg-row">
+            <div class="reg-field">
+              <svg class="reg-field-ico" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9zM4 21c1.5-4 5-6 8-6s6.5 2 8 6" stroke="#8b8398" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <input type="text" name="nombre" placeholder="Nombre completo *" aria-label="Nombre completo" autocomplete="name" maxlength="80" required>
+            </div>
+            <div class="reg-field">
+              <svg class="reg-field-ico" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.4 2.1L8.1 9.7a16 16 0 0 0 6.2 6.2l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z" stroke="#8b8398" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <input type="tel" name="telefono" placeholder="Teléfono / WhatsApp *" aria-label="Teléfono o WhatsApp" autocomplete="tel-national" inputmode="tel" maxlength="20" required>
+            </div>
+          </div>
+          <div class="reg-row">
+            <div class="reg-field">
+              <svg class="reg-field-ico" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4V4z" stroke="#8b8398" stroke-width="1.8" stroke-linejoin="round"/><path d="M4 6l8 7 8-7" stroke="#8b8398" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <input type="email" name="correo" placeholder="Correo electrónico" aria-label="Correo electrónico (opcional)" autocomplete="email" maxlength="120">
+            </div>
+            <div class="reg-field">
+              <svg class="reg-field-ico" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#8b8398" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <select name="plan_interes" aria-label="Plan de interés">
+                <option value="">Plan de interés</option>
+                <option value="Start">Start — 200 Mbps</option>
+                <option value="Familiar + TV">Familiar + TV — 300 Mbps</option>
+                <option value="Pro + TV">Pro + TV — 400 Mbps</option>
+                <option value="Ultra + TV">Ultra + TV — 600 Mbps</option>
+                <option value="Max + TV">Max + TV — 800 Mbps</option>
+                <option value="Empresas">Plan para empresa / MYPE</option>
+                <option value="No estoy seguro">No estoy seguro todavía</option>
+              </select>
+            </div>
+          </div>
+          <div class="reg-field">
+            <svg class="reg-field-ico" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z" stroke="#8b8398" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="#8b8398" stroke-width="1.8"/></svg>
+            <input type="text" name="direccion" placeholder="Dirección donde deseas el servicio" aria-label="Dirección donde deseas el servicio" autocomplete="street-address" maxlength="200">
+          </div>
+          <textarea name="mensaje" placeholder="Cuéntanos algo más (opcional)" aria-label="Mensaje (opcional)" rows="3" maxlength="1000"></textarea>
+          <div class="hp" aria-hidden="true"><label>No completes este campo <input type="text" name="sitio_web" tabindex="-1" autocomplete="off"></label></div>
+          <label class="reg-consent">
+            <input type="checkbox" name="consentimiento" required>
+            <span>Acepto que NextFiber trate mis datos personales según la <a href="legal/privacidad.html" target="_blank" rel="noopener">Política de privacidad</a> y me contacte por teléfono, WhatsApp o correo para ofrecerme información sobre el servicio. *</span>
+          </label>
+          <button class="btn btn-lime btn-liquid btn-block reg-submit" id="registrarDatosFallback" type="submit">
+            <span>Registrar mis datos</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <span data-moving-border-button data-label="Registrar mis datos →" data-form-id="regForm" data-block="true" data-fallback-id="registrarDatosFallback"></span>
+          <p class="reg-legal">Al registrarte, además de dar tu consentimiento arriba, aceptas nuestros <a href="legal/terminos.html" target="_blank" rel="noopener">Términos y condiciones</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TV DIGITAL -->
+<section id="tv" class="tv">
+  <div class="wrap tv-grid">
+    <div class="tv-copy reveal">
+      <span class="eyebrow">TV Digital</span>
+      <h2>Tu fútbol y tus series, sin cambiar de red.</h2>
+      <div class="liga-pill">⚽ Incluye Liga 1 MAX en todos los planes con TV</div>
+      <p>Nuestros planes con TV digital corren sobre la misma fibra que tu internet: misma velocidad, mismo router, mismo soporte local. Sin antena, sin decodificadores viejos.</p>
+      <div class="tv-feats">
+        <div class="tv-feat"><b>HD real</b><span>Señal digital en alta definición</span></div>
+        <div class="tv-feat"><b>Multipantalla</b><span>Mira en TV, celular o laptop</span></div>
+        <div class="tv-feat"><b>On-demand</b><span>Contenido disponible cuando quieras</span></div>
+        <div class="tv-feat"><b>Sin antena</b><span>Todo llega por la fibra óptica</span></div>
+      </div>
+      <div class="tv-grillas">
+        <a href="pdf/parrilla-canales-cusco.pdf" target="_blank" rel="noopener" class="tv-grilla-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6M9 15v-3m3 3v-5m3 5v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Parrilla de canales · Cusco (PDF)
+        </a>
+        <a href="pdf/parrilla-canales-puerto-maldonado.pdf" target="_blank" rel="noopener" class="tv-grilla-link">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6M9 15v-3m3 3v-5m3 5v-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Parrilla de canales · Puerto Maldonado (PDF)
+        </a>
+      </div>
+    </div>
+    <div class="tv-panel reveal" id="tvPanelFallback">
+      <div class="row"><span>Canales HD</span><b>+80</b></div>
+      <div class="row"><span>Deportes en vivo</span><b>Liga 1 MAX</b></div>
+      <div class="row"><span>Dispositivos simultáneos</span><b>Hasta 3</b></div>
+      <div class="row"><span>Costo adicional</span><b>Incluido en el plan</b></div>
+    </div>
+    <div class="tv-panel-widget reveal" data-tv-carousel data-fallback-id="tvPanelFallback" aria-label="Carrusel animado de TV Digital"></div>
+  </div>
+</section>
+
+<!-- CONFIABILIDAD -->
+<section id="confiabilidad" style="background:var(--gray-100);">
+  <div class="wrap">
+    <div class="incl-top reveal">
+      <h3>Tu servicio de internet en casa también incluye:</h3>
+    </div>
+    <div class="incl-grid">
+      <div class="incl-card reveal">
+        <div><strong>Instalación gratuita</strong><p>Coordinamos la fecha según la disponibilidad técnica en tu zona.</p></div>
+        <img src="images/icon-instalacion-gratuita.jpg" alt="Instalación gratuita" class="incl-ico-img" loading="lazy">
+      </div>
+      <div class="incl-card reveal">
+        <div><strong>Módem WiFi incluido</strong><p>Router de alto alcance, con señal de 2.4GHz y 5GHz.</p></div>
+        <img src="images/icon-modem-wifi.jpg" alt="Módem WiFi NextFiber" class="incl-ico-img" loading="lazy">
+      </div>
+    </div>
+
+    <div class="benef-head reveal">
+      <span class="eyebrow">Beneficios</span>
+      <h2>Beneficios del <span class="tri-purple">internet</span> NextFiber.</h2>
+      <p>Fibra óptica 100% real hasta tu hogar, con la velocidad, la cobertura WiFi y la atención que tu conexión necesita.</p>
+    </div>
+
+    <div class="benef-orbit reveal">
+      <div class="benef-orbit-photo">
+        <img src="images/mascota-wifi-morado.png" alt="Mascota NextFiber">
+      </div>
+
+      <div class="spoke spoke-tl">
+        <div class="spoke-row">
+          <span class="spoke-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="var(--purple-600)" stroke-width="1.8"/><path d="M12 12l4-4M6 12H4m16 0h-2M12 6V4" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="spoke-line"></span>
+        </div>
+        <strong>Velocidad simétrica</strong>
+        <p>Hasta 800 Mbps de bajada y subida, para una experiencia rápida y eficiente.</p>
+      </div>
+
+      <div class="spoke spoke-tr">
+        <div class="spoke-row">
+          <span class="spoke-line"></span>
+          <span class="spoke-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5a10 10 0 0 1 14 0M8 16a5.5 5.5 0 0 1 8 0" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="19.2" r="1.3" fill="var(--purple-600)"/></svg></span>
+        </div>
+        <strong>Mayor cobertura WiFi</strong>
+        <p>Router de alto alcance incluido, para que la señal llegue a cada ambiente.</p>
+      </div>
+
+      <div class="spoke spoke-bl">
+        <div class="spoke-row">
+          <span class="spoke-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="var(--purple-600)" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="spoke-line"></span>
+        </div>
+        <strong>Conexión estable, sin cortes</strong>
+        <p>Fibra óptica dedicada hasta tu domicilio, sin compartir el ancho de banda.</p>
+      </div>
+
+      <div class="spoke spoke-br">
+        <div class="spoke-row">
+          <span class="spoke-line"></span>
+          <span class="spoke-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3.5 2" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="var(--purple-600)" stroke-width="1.8"/></svg></span>
+        </div>
+        <strong>Instalación rápida</strong>
+        <p>Coordinamos la visita técnica en un promedio de 24 horas.</p>
+      </div>
+    </div>
+
+    <div class="benef-grid benef-grid-mobile">
+      <div class="benef-card reveal">
+        <span class="benef-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="var(--purple-600)" stroke-width="1.8"/><path d="M12 12l4-4M6 12H4m16 0h-2M12 6V4" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div><strong>Velocidad simétrica</strong><p>Hasta 800 Mbps de bajada y subida, ideal para trabajo remoto, videollamadas y streaming sin trabas.</p></div>
+      </div>
+      <div class="benef-card reveal">
+        <span class="benef-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12.5a10 10 0 0 1 14 0M8 16a5.5 5.5 0 0 1 8 0" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="19.2" r="1.3" fill="var(--purple-600)"/></svg></span>
+        <div><strong>Mayor cobertura WiFi</strong><p>Router WiFi de alto alcance incluido en todos los planes, para que la señal llegue a cada ambiente.</p></div>
+      </div>
+      <div class="benef-card reveal">
+        <span class="benef-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z" stroke="var(--purple-600)" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11.5l2 2 4-4" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><strong>Conexión estable, sin cortes</strong><p>Fibra óptica dedicada hasta tu domicilio: no compartes el ancho de banda con tus vecinos.</p></div>
+      </div>
+      <div class="benef-card reveal">
+        <span class="benef-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3.5 2" stroke="var(--purple-600)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="var(--purple-600)" stroke-width="1.8"/></svg></span>
+        <div><strong>Instalación rápida</strong><p>Coordinamos la visita técnica en un promedio de 24 horas desde que confirmamos tu cobertura.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMPRESAS / MYPE -->
+<section class="biz">
+  <div class="biz-content reveal">
+    <div class="biz-inner">
+      <span class="biz-pill">📶 Planes para tu negocio</span>
+      <h2>Internet dedicado para tu <span class="accent">MYPE</span> o empresa</h2>
+      <p>Velocidad simétrica dedicada, soporte prioritario e IP fija para que tu negocio esté siempre conectado, sin interrupciones.</p>
+      <div class="biz-ctas">
+        <a href="#registro" class="btn btn-lime btn-liquid btn-3d" id="cotizarNegocioFallback" data-hover-text="Hablemos ya" data-plan="Empresas">Cotizar para mi negocio</a>
+        <span data-moving-border-button data-label="Cotizar para mi negocio" data-href="#registro" data-plan="Empresas" data-fallback-id="cotizarNegocioFallback"></span>
+        <a href="#cobertura" class="btn btn-outline-inv">Consultar cobertura</a>
+      </div>
+      <div class="biz-stats">
+        <div><b>800 Mbps</b>Velocidad de plan</div>
+        <div><b>100%</b>Fibra hasta tu negocio</div>
+        <div><b>24h</b>Instalación rápida</div>
+      </div>
+    </div>
+    <div class="biz-video">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="video/fiber-loop.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- COBERTURA -->
+<section id="cobertura" class="coverage">
+  <div class="cov-glow" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow cov-eyebrow" style="color:var(--lime-400)"><span class="cov-dot"></span>Dos sedes, una sola red</span>
+      <h2 class="cov-title">Presentes en Cusco y Puerto Maldonado.</h2>
+      <p>Cada sede opera con su propio equipo técnico local, para que el soporte llegue rápido sin importar la distancia entre la sierra y la selva.</p>
+    </div>
+    <div class="cov-grid">
+      <div class="cov-card cov-in-left reveal">
+        <span class="cov-tag">Sede principal</span>
+        <h3>Cusco — San Sebastián</h3>
+        <div class="cov-map-wrap">
+          <div id="hs-pin-leaflet-cusco" class="cov-map hs-leaflet z-10" data-lat="-13.5391482" data-lng="-71.9155899" data-zoom="15"></div>
+          <a href="https://maps.app.goo.gl/9pvtUBeZkGEzS12r5" target="_blank" rel="noopener" class="cov-map-cta">Ver en Google Maps ↗</a>
+        </div>
+        <p>San Sebastián. La Victoria A-28, San Sebastián, Cusco. Cobertura en el centro histórico y los distritos en expansión de la ciudad.</p>
+        <div class="cov-meta">
+          <div class="cov-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Lun–Vie</b>8:00 am – 1:00 pm / 2:00 pm – 6:00 pm</div>
+          </div>
+          <div class="cov-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><b>Sáb</b>8:00 am – 2:00 pm</div>
+          </div>
+        </div>
+      </div>
+      <div class="cov-card cov-in-right reveal">
+        <span class="cov-tag">Sede en expansión</span>
+        <h3>Puerto Maldonado — Madre de Dios</h3>
+        <div class="cov-map-wrap">
+          <div id="hs-pin-leaflet-puerto" class="cov-map hs-leaflet z-10" data-lat="-12.584085" data-lng="-69.192171" data-zoom="15"></div>
+          <a href="https://maps.app.goo.gl/8XEw7LU8v2B3favJA" target="_blank" rel="noopener" class="cov-map-cta">Ver en Google Maps ↗</a>
+        </div>
+        <p>Cobertura en el casco urbano de la capital de la biodiversidad, con instalaciones preparadas para el clima húmedo y las lluvias intensas.</p>
+        <div class="cov-meta">
+          <div class="cov-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            <div><b>Atención</b>Coordinada desde nuestra central en Cusco</div>
+          </div>
+          <div class="cov-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="3" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="17" y="13" width="4" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+            <div><b>Soporte</b><a href="tel:+51902175702">902 175 702</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cov-check reveal">
+      <span class="cov-check-ico">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <p>Elige tu departamento, escribe tu distrito y déjanos tu WhatsApp: revisamos la cobertura en tu zona y te respondemos en menos de 24 horas.</p>
+      <form class="check-form" data-lead-form="verificador_cobertura" id="coverageCheckForm">
+        <select name="departamento" aria-label="Departamento" required>
+            <option value="" selected disabled>Departamento</option>
+            <option value="Cusco">Cusco</option>
+            <option value="Madre de Dios">Madre de Dios</option>
+        </select>
+        <input type="text" name="direccion" placeholder="Ingresa tu distrito" aria-label="Distrito" autocomplete="off" maxlength="120" required>
+        <input type="tel" name="telefono" placeholder="Tu WhatsApp" aria-label="Celular o WhatsApp" autocomplete="tel-national" inputmode="tel" maxlength="20" required>
+        <div class="hp" aria-hidden="true"><label>No completes este campo <input type="text" name="sitio_web" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn btn-lime btn-liquid btn-3d" id="verificarCoberturaFallback" data-hover-text="Consultar ahora" type="submit">Verificar</button>
+        <span data-moving-border-button data-label="Verificar" data-form-id="coverageCheckForm" data-fallback-id="verificarCoberturaFallback"></span>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- PAGOS: título centrado + barra blanca de una sola fila -->
+<section id="pagos" class="pay-compact">
+  <div class="wrap">
+    <div class="pay-head reveal">
+      <h2 class="pay-title">Canales oficiales de pago</h2>
+      <p>Tu servicio se activa apenas confirmamos el pago.</p>
+    </div>
+    <div class="pay-bar reveal">
+      <ul class="pay-row" aria-label="Canales oficiales de pago">
+        <li class="pay-item"><span class="pay-chip-ico pay-ico-yape pay-ico-logo"><img src="images/yape-logo.png" alt="" width="34" height="34" loading="lazy"></span>Yape</li>
+        <li class="pay-item"><span class="pay-chip-ico pay-ico-plin pay-ico-logo"><img src="images/plin-logo.png" alt="" width="34" height="34" loading="lazy"></span>Plin</li>
+        <li class="pay-item"><span class="pay-chip-ico pay-ico-transferencia"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 10l9-6 9 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9M9.5 10v9M14.5 10v9M19 10v9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 22h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Transferencia</li>
+        <li class="pay-item"><span class="pay-chip-ico pay-ico-card"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 9.5h19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 15h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tarjeta</li>
+        <li class="pay-item"><span class="pay-chip-ico pay-ico-agente"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3.2 8.4-7 10-3.8-1.6-7-5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Agente autorizado</li>
+        <li class="pay-item"><span class="pay-chip-ico pay-ico-ventanilla"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 21V9l9-6 9 6v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 21v-6h8v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ventanilla</li>
+        <!-- Para agregar el logo de un banco (cuando lo confirmes), copia esta línea y cambia la imagen:
+        <li class="pay-item"><img class="pay-logo" src="images/logo-banco.png" alt="Nombre del banco" height="28" loading="lazy"></li> -->
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section id="opiniones" style="background:var(--gray-100);">
+  <div class="wrap">
+    <div class="test-layout reveal">
+
+      <div class="test-nav">
+        <span class="eyebrow">Clientes NextFiber</span>
+        <h2>Lo que dicen en Cusco y en la selva.</h2>
+        <p>Historias reales de hogares y negocios que ya cambiaron a fibra óptica de verdad.</p>
+        <div class="test-dots" role="tablist" aria-label="Testimonios">
+          <button class="test-dot active" data-index="0" aria-label="Testimonio 1"></button>
+          <button class="test-dot" data-index="1" aria-label="Testimonio 2"></button>
+          <button class="test-dot" data-index="2" aria-label="Testimonio 3"></button>
+        </div>
+      </div>
+
+      <div class="test-stage">
+        <div class="test-slide active" data-index="0">
+          <div class="test-stars">★★★★★</div>
+          <blockquote>Nunca pensé tener fibra real en Madre de Dios. Ahora trabajo desde Puerto Maldonado sin depender de la señal del celular.</blockquote>
+          <div class="test-sep"></div>
+          <div class="test-person">
+            <span class="test-avatar">J</span>
+            <div><b>Jorge R.</b><span>Puerto Maldonado</span></div>
+          </div>
+        </div>
+
+        <div class="test-slide" data-index="1">
+          <div class="test-stars">★★★★★</div>
+          <blockquote>Desde que cambié a NextFiber, mis clases virtuales dejaron de congelarse incluso con lluvia.</blockquote>
+          <div class="test-sep"></div>
+          <div class="test-person">
+            <span class="test-avatar">R</span>
+            <div><b>Rosa M.</b><span>Cusco</span></div>
+          </div>
+        </div>
+
+        <div class="test-slide" data-index="2">
+          <div class="test-stars">★★★★★</div>
+          <blockquote>El soporte responde en minutos, no en días. Y hablan español de verdad, no un guion.</blockquote>
+          <div class="test-sep"></div>
+          <div class="test-person">
+            <span class="test-avatar">K</span>
+            <div><b>Kelly A.</b><span>Cusco</span></div>
+          </div>
+        </div>
+
+        <div class="test-deco test-deco-a" aria-hidden="true"></div>
+        <div class="test-deco test-deco-b" aria-hidden="true"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS FRECUENTES -->
+<section id="preguntas" class="faq-section">
+  <div class="wrap faq-wrap">
+    <aside class="faq-aside reveal">
+      <h2>Preguntas frecuentes <span>y atención al cliente</span></h2>
+      <div class="faq-help">
+        <p>¿No encuentras tu respuesta? Escríbenos y te ayudamos.</p>
+        <a href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20tengo%20una%20consulta." class="btn btn-lime btn-liquid btn-3d" id="preguntarWhatsappFallback" data-hover-text="&iexcl;Escr&iacute;benos ya!" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+        <span data-moving-border-button data-label="Preguntar por WhatsApp" data-href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20tengo%20una%20consulta." data-external="true" data-fallback-id="preguntarWhatsappFallback"></span>
+      </div>
+      <picture class="faq-mascot">
+        <source media="(prefers-reduced-motion: reduce)" srcset="images/mascota-fibra-quieta.png">
+        <img src="images/mascota-fibra.gif" alt="" width="512" height="512" loading="lazy" decoding="async">
+      </picture>
+    </aside>
+    <div class="faq-main reveal">
+      <div class="faq-tabs" aria-label="Temas de las preguntas frecuentes">
+        <button type="button" class="faq-tab" id="faq-tab-1" aria-controls="faq-panel-1"><span class="faq-tab-ico" aria-hidden="true"><img src="images/faq-icon-contratar.png" alt="" width="64" height="64" loading="lazy" decoding="async"></span><span class="faq-tab-label">Contratar</span></button>
+        <button type="button" class="faq-tab" id="faq-tab-2" aria-controls="faq-panel-2"><span class="faq-tab-ico" aria-hidden="true"><img src="images/faq-icon-internet-tv.png" alt="" width="64" height="64" loading="lazy" decoding="async"></span><span class="faq-tab-label">Internet y TV</span></button>
+        <button type="button" class="faq-tab" id="faq-tab-3" aria-controls="faq-panel-3"><span class="faq-tab-ico" aria-hidden="true"><img src="images/faq-icon-pagos-soporte.png" alt="" width="64" height="64" loading="lazy" decoding="async"></span><span class="faq-tab-label">Pagos y soporte</span></button>
+      </div>
+      <div class="faq-panels">
+      <div class="faq-panel" id="faq-panel-1">
+          <h3 class="faq-panel-title">Preguntas sobre <strong>contratar</strong></h3>
+          <details class="faq-item" name="faq" open>
+            <summary><span>¿Dónde puedo contratar NextFiber y cómo sé si hay cobertura en mi zona?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Atendemos en Cusco y en Puerto Maldonado. Puedes contratar por WhatsApp o llamando al <a href="tel:+51945835216">945 835 216</a>, o dejar tus datos en el formulario de esta página. Revisamos la cobertura en tu dirección y te respondemos en menos de 24 horas. <a href="#cobertura">Consultar cobertura</a></p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Qué planes tienen y cuánto cuestan?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Tenemos cinco planes para el hogar: desde S/ 65 al mes con 200 Mbps hasta S/ 150 al mes con 800 Mbps. Los precios incluyen impuestos. Puedes ver el detalle de cada uno en la sección <a href="#planes">Planes</a>.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Qué incluye la instalación?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Todos los planes incluyen fibra óptica hasta tu hogar (FTTH), router WiFi e instalación. Los planes Pro, Ultra y Max traen un router WiFi de alto alcance.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Tienen planes para mi negocio?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Sí. Tenemos planes para MYPE y empresas, con soporte prioritario e IP fija. Cuéntanos qué necesita tu negocio y te cotizamos desde el formulario de <a href="#registro">Regístrate</a> o por WhatsApp.</p></div>
+          </details>
+      </div>
+      <div class="faq-panel" id="faq-panel-2">
+          <h3 class="faq-panel-title">Preguntas sobre <strong>internet y TV</strong></h3>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Qué tecnología de internet es NextFiber?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Es fibra óptica hasta tu casa (FTTH) con tecnología GPON, y con soporte técnico local en Cusco y Puerto Maldonado.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Qué pasa después de los 6 meses de 1 Gbps?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Los planes con TV navegan a 1 Gbps durante tus primeros 6 meses. Después, el servicio continúa a la velocidad que contrataste (300, 400, 600 u 800 Mbps, según tu plan).</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Qué incluyen los planes con TV digital?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Incluyen TV Digital HD con Liga 1 MAX y más de 80 canales HD, sin antena: la señal llega por la misma fibra. Puedes ver en la TV, el celular o la laptop, hasta en 3 dispositivos a la vez. La lista de canales de cada ciudad está en PDF en la sección <a href="#tv">TV digital</a>.</p></div>
+          </details>
+      </div>
+      <div class="faq-panel" id="faq-panel-3">
+          <h3 class="faq-panel-title">Preguntas sobre <strong>pagos y soporte</strong></h3>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Cuáles son las formas de pago?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Puedes pagar con Yape, Plin, transferencia bancaria, tarjeta de débito o crédito, con un agente autorizado o en la ventanilla de nuestra oficina.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Cuáles son los canales de atención y el horario?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><ul class="faq-contacts"><li>Ventas (llamada o WhatsApp): <a href="tel:+51945835216"><b>945 835 216</b></a></li><li>Atención: <a href="tel:+51999994752"><b>999 994 752</b></a></li><li>Facturación: <a href="tel:+51998555093"><b>998 555 093</b></a></li><li>Soporte técnico: <a href="tel:+51902175702"><b>902 175 702</b></a></li></ul><p>Nuestra oficina está en La Victoria A-28, San Sebastián, Cusco. Atiende de lunes a viernes de 8:00 a. m. a 1:00 p. m. y de 2:00 p. m. a 6:00 p. m., y los sábados de 8:00 a. m. a 2:00 p. m. La atención de Puerto Maldonado se coordina desde nuestra central en Cusco.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Qué hago si tengo un problema con mi servicio?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Llama a soporte técnico al <a href="tel:+51902175702">902 175 702</a> o escríbenos por WhatsApp al <a href="https://wa.me/51945835216" target="_blank" rel="noopener">945 835 216</a>. Cuéntanos qué está pasando y la dirección donde tienes el servicio.</p></div>
+          </details>
+          <details class="faq-item" name="faq">
+            <summary><span>¿Cómo presento un reclamo o una queja?</span><svg class="faq-chev" width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+            <div class="faq-body"><p>Puedes hacerlo en nuestro <a href="legal/libro-reclamaciones.html">Libro de Reclamaciones virtual</a>. Al enviarlo recibes una copia en el correo que registres, y te respondemos en un plazo máximo de 15 días hábiles.</p></div>
+          </details>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final-cta">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="color:var(--lime-300)">Cusco · Puerto Maldonado</span>
+    <h2>¿Listo para cambiarte a la <em>verdadera</em> fibra óptica?</h2>
+    <p>Únete a los hogares de Cusco y Puerto Maldonado que ya disfrutan de internet sin cortes y a toda velocidad.</p>
+    <div class="final-ctas">
+      <a href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20quiero%20contratar%20un%20plan%20de%20internet%20por%20fibra%20%C3%B3ptica." class="btn btn-lime btn-liquid btn-3d" id="contratarWhatsappFallback" data-hover-text="&iexcl;Escr&iacute;benos ya!" target="_blank" rel="noopener">Contratar por WhatsApp</a>
+      <span data-moving-border-button data-label="Contratar por WhatsApp" data-href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20quiero%20contratar%20un%20plan%20de%20internet%20por%20fibra%20%C3%B3ptica." data-external="true" data-fallback-id="contratarWhatsappFallback"></span>
+      <a href="tel:+51945835216" class="btn btn-outline-inv">Llamar al 945 835 216</a>
+    </div>
+  </div>
+</section>
+
+<footer id="soporte">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="logo" aria-label="NextFiber">
+          <img src="images/logo-nextfiber-dark.jpg" alt="NextFiber - Internet y TV por Fibra Óptica">
+        </a>
+        <p>Internet y TV por fibra óptica 100% real. Tecnología GPON con velocidad simétrica y soporte local en Cusco y Puerto Maldonado.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/nextfiberperu/?locale=es_LA" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5H16l.5-3h-3V8.5c0-.83.17-1.5 1.5-1.5H16.5V4.14C16.18 4.1 15.09 4 13.82 4 11.17 4 9.5 5.6 9.5 8.2v2.3H7v3h2.5V21h4Z" fill="currentColor"/></svg>
+          </a>
+          <!-- PENDIENTE: reemplazar por la URL del perfil de Instagram (hoy apunta a una publicación suelta) -->
+          <a href="https://www.instagram.com/p/Cz_a6ztup5G/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></svg>
+          </a>
+          <!-- PENDIENTE: reemplazar por la URL del perfil de TikTok (hoy apunta a un hashtag mal escrito) -->
+          <a href="https://www.tiktok.com/tag/nexrfiber" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3v9.5a3.5 3.5 0 1 1-2.5-3.35V6.9A6 6 0 1 0 18 12.6V9.4c1.1.75 2.4 1.2 3.8 1.2V7.4c-2.1 0-3.8-1.65-3.8-3.7V3h-2Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20quiero%20contratar%20un%20plan%20de%20internet%20por%20fibra%20%C3%B3ptica." aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.2-1.33A10 10 0 1 0 12 2Zm5.66 14.24c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.13.11-1.83-.11-.42-.14-.96-.31-1.66-.6-2.92-1.26-4.82-4.17-4.97-4.36-.14-.19-1.19-1.58-1.19-3.02 0-1.43.75-2.13 1.02-2.42.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.64.49.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.29.28-.13.56.17.28.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.19.7-.82.89-1.1.19-.28.37-.23.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="#planes">Planes de internet</a></li>
+          <li><a href="#tv">TV Digital</a></li>
+          <li><a href="#pagos">Formas de pago</a></li>
+          <li><a href="#soporte">Soporte técnico</a></li>
+          <li><a href="#preguntas">Preguntas frecuentes</a></li>
+          <li><a href="https://www.speedtest.net/es" target="_blank" rel="noopener noreferrer">Test de velocidad</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li>Ventas: <a href="tel:+51945835216"><b>945 835 216</b></a></li>
+          <li>Atención: <a href="tel:+51999994752"><b>999 994 752</b></a></li>
+          <li>Facturación: <a href="tel:+51998555093"><b>998 555 093</b></a></li>
+          <li>Soporte técnico: <a href="tel:+51902175702"><b>902 175 702</b></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Parrilla de canales</h4>
+        <ul>
+          <li><a href="pdf/parrilla-canales-cusco.pdf" target="_blank" rel="noopener">Cusco (PDF)</a></li>
+          <li><a href="pdf/parrilla-canales-puerto-maldonado.pdf" target="_blank" rel="noopener">Puerto Maldonado (PDF)</a></li>
+        </ul>
+      </div>
+      <div class="foot-col visit">
+        <h4>Visítanos</h4>
+        <p>La Victoria A-28,<br>San Sebastián — Cusco, Perú</p>
+        <p>Lun–Vie: 8:00 am–1:00 pm / 2:00 pm–6:00 pm<br>Sáb: 8:00 am–2:00 pm</p>
+        <p style="color:var(--gray-500); font-size:12.5px;">También en Puerto Maldonado, Madre de Dios.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GRUPO ANTEL E.I.R.L. (NextFiber) · RUC 20602947000 — Todos los derechos reservados.</span>
+      <div class="links">
+        <a href="legal/libro-reclamaciones.html">Libro de reclamaciones</a>
+        <a href="legal/terminos.html">Términos y condiciones</a>
+        <a href="legal/privacidad.html">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20planes%20de%20internet." aria-label="Escr&iacute;benos por WhatsApp" target="_blank" rel="noopener">
+  <span class="wa-pill">
+    <img class="wa-avatar" src="images/avatar-nextfiber-face.png" alt="">
+    <span class="wa-text">Chatea con nosotros</span>
+  </span>
+  <span class="wa-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.2-1.33A10 10 0 1 0 12 2Zm5.66 14.24c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.13.11-1.83-.11-.42-.14-.96-.31-1.66-.6-2.92-1.26-4.82-4.17-4.97-4.36-.14-.19-1.19-1.58-1.19-3.02 0-1.43.75-2.13 1.02-2.42.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.64.49.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.29.28-.13.56.17.28.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.19.7-.82.89-1.1.19-.28.37-.23.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36Z"/></svg></span>
+</a>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/script.js"></script>
+<script src="js/wa-float.js"></script>
+<script src="js/btn-3d.js"></script>
+<script src="js/faq-tabs.js" defer></script>
+<script src="js/zonas-cobertura.js" defer></script>
+<!--
+  Botón React con shader real (opcional).
+  Este archivo se genera aparte, desde nextfiber/react-components, con:
+    npm run build:widget
+  y luego se copia aquí como frontend/js/liquid-button.widget.js
+  Si el archivo no existe todavía, el navegador simplemente ignora este
+  script (error 404 silencioso) y se queda el botón normal en CSS.
+-->
+<script src="js/liquid-button.widget.js" defer></script>
+<!--
+  Carrusel "TV Digital" con React + Framer Motion (opcional).
+  Este archivo se genera aparte, desde nextfiber/react-components, con:
+    npm run build:widget:tv
+  y luego se copia aquí como frontend/js/tv-carousel.widget.js
+  Si el archivo no existe todavía, el navegador simplemente ignora este
+  script (error 404 silencioso) y se queda el panel simple en su lugar.
+-->
+<script src="js/tv-carousel.widget.js" defer></script>
+<!--
+  Botones con borde animado, React + Framer Motion (opcional).
+  Este archivo se genera aparte, desde nextfiber/react-components, con:
+    npm run build:widget:moving-border
+  y luego se copia aquí como frontend/js/moving-border-button.widget.js
+  Si el archivo no existe todavía, el navegador simplemente ignora este
+  script (error 404 silencioso) y se quedan los botones normales en CSS.
+-->
+<script src="js/moving-border-button.widget.js" defer></script>
+</body>
+</html>

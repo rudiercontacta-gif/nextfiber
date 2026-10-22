@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 4%;
+    --border: 240 6% 90%;
+    --radius: 0.75rem;
+  }
+
+  /* Reset mínimo SOLO dentro de los widgets. No usar selectores globales
+     (html, body, h1, *...): este CSS se inyecta en el sitio principal. */
+  :where([data-liquid-button], [data-tv-carousel], [data-moving-border-button]) *,
+  :where([data-liquid-button], [data-tv-carousel], [data-moving-border-button]) ::before,
+  :where([data-liquid-button], [data-tv-carousel], [data-moving-border-button]) ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: hsl(var(--border));
+  }
+
+  :where([data-liquid-button], [data-tv-carousel], [data-moving-border-button]) :where(h1, h2, h3, h4, h5, h6, p) {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  :where([data-liquid-button], [data-tv-carousel], [data-moving-border-button]) :where(button) {
+    font-family: inherit;
+    font-size: 100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: button;
+    cursor: pointer;
+  }
+
+  :where([data-liquid-button], [data-tv-carousel], [data-moving-border-button]) :where(img, svg, canvas) {
+    display: block;
+    vertical-align: middle;
+  }
+}

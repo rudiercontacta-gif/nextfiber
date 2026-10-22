@@ -1,0 +1,40 @@
+.legal-hero{background:var(--purple-950); color:#fff; padding:56px 0 40px;}
+.legal-hero .wrap{max-width:900px;}
+.legal-hero .eyebrow{color:var(--lime-300);}
+.legal-hero h1{font-size:32px; color:#fff;}
+.legal-hero p{color:var(--gray-300); margin-top:10px;}
+.legal-body{padding:48px 0 80px;}
+.legal-body .wrap{max-width:900px;}
+.legal-content h2{font-size:20px; margin:34px 0 12px;}
+.legal-content h2:first-child{margin-top:0;}
+.legal-content h3{font-size:16px; margin:22px 0 8px;}
+.legal-content p{margin:0 0 14px; line-height:1.7; color:var(--gray-700);}
+.legal-content ul{margin:0 0 14px; padding-left:22px; line-height:1.7; color:var(--gray-700); list-style:disc;}
+.legal-content li{margin-bottom:6px;}
+.legal-content strong{color:var(--black);}
+.legal-note{background:var(--gray-100); border-radius:12px; padding:16px 18px; font-size:13.5px; color:var(--gray-700); margin:18px 0;}
+.legal-note b{color:var(--purple-600);}
+.legal-updated{font-family:var(--mono); font-size:12.5px; color:var(--gray-500); margin-bottom:28px;}
+
+.claim-form{background:var(--gray-100); border-radius:16px; padding:28px; margin-top:10px;}
+.claim-form fieldset{border:none; padding:0; margin:0 0 26px;}
+.claim-form legend{font-family:var(--display); font-weight:600; font-size:16px; margin-bottom:14px; padding:0;}
+.claim-form .field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+.claim-form label{display:block; font-size:13px; font-weight:600; color:var(--gray-700); margin-bottom:6px;}
+.claim-form input,
+.claim-form select,
+.claim-form textarea{width:100%; border:1.5px solid var(--gray-300); border-radius:10px; padding:11px 13px; font:inherit; font-size:14.5px; background:#fff;}
+.claim-form textarea{min-height:110px; resize:vertical;}
+.claim-form input:focus,
+.claim-form select:focus,
+.claim-form textarea:focus{outline:3px solid rgba(109,40,217,0.2); border-color:var(--purple-600);}
+.claim-form .radio-row{display:flex; gap:22px; align-items:center;}
+.claim-form .radio-row label{display:flex; align-items:center; gap:8px; font-weight:600; margin-bottom:0;}
+.claim-form .radio-row input{width:auto;}
+.claim-form .checkbox-row{display:flex; align-items:flex-start; gap:10px; font-size:13px; color:var(--gray-700); margin-bottom:18px;}
+.claim-form .checkbox-row input{width:auto; margin-top:3px;}
+.claim-form .honeypot{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;}
+.claim-form .form-msg{margin-top:16px; font-weight:600; font-size:14px; display:none;}
+.claim-form .form-msg.ok{display:block; color:#0f6b43;}
+.claim-form .form-msg.error{display:block; color:#a11d2c;}
+@media(max-width:640px){ .claim-form .field-row{grid-template-columns:1fr;} }

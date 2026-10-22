@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>NextFiber | Libro de Reclamaciones — Panel</title>
+<style>
+  :root{
+    --purple-950:#180a2c; --purple-600:#6d28d9; --lime-400:#b6ff3c;
+    --black:#0b0b0d; --white:#fff; --gray-100:#f5f4f7; --gray-300:#d3d0da; --gray-500:#6f6b78;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'Segoe UI', Arial, sans-serif; margin:0; background:var(--gray-100); color:var(--black);}
+  header{background:var(--purple-950); color:#fff; padding:22px 30px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  header h1{font-size:19px; margin:0;}
+  header span{color:var(--lime-400); font-family:monospace; font-size:12px;}
+  header a{color:var(--lime-400);}
+  .gate, .content{max-width:1280px; margin:0 auto; padding:30px;}
+  .gate{max-width:420px; background:#fff; margin-top:60px; border-radius:16px; padding:34px; box-shadow:0 10px 40px rgba(0,0,0,0.08);}
+  .gate p{color:var(--gray-500); font-size:13.5px; margin:0 0 16px;}
+  .gate input{width:100%; padding:12px 14px; border:1.5px solid var(--gray-300); border-radius:10px; margin-bottom:14px; font-size:14px;}
+  .gate input:focus{outline:3px solid rgba(109,40,217,0.25); border-color:var(--purple-600);}
+  .gate-error{color:#a11d2c !important; font-weight:600; margin:14px 0 0 !important; min-height:1em;}
+  button{background:var(--lime-400); border:none; padding:12px 20px; border-radius:10px; font-weight:700; cursor:pointer; font-size:14px;}
+  button.secondary{background:#fff; border:1.5px solid var(--gray-300);}
+  button.small{padding:7px 14px; font-size:12.5px;}
+  button:focus-visible{outline:3px solid var(--purple-600); outline-offset:2px;}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;}
+  .table-wrap{overflow-x:auto; border-radius:14px; box-shadow:0 6px 24px rgba(0,0,0,0.05);}
+  table{width:100%; border-collapse:collapse; background:#fff; min-width:1100px;}
+  th, td{padding:12px 14px; text-align:left; font-size:13px; border-bottom:1px solid #eee; vertical-align:top;}
+  th{background:var(--purple-950); color:#fff; font-weight:600; position:sticky; top:0;}
+  tr:hover td{background:#faf9ff;}
+  td a{color:var(--purple-600); font-weight:600;}
+  td.msg{max-width:280px; white-space:pre-wrap; word-break:break-word; color:#333;}
+  td.nowrap{white-space:nowrap;}
+  .badge{display:inline-block; padding:3px 10px; border-radius:999px; font-size:11px; font-weight:700; background:#ece9f7; color:var(--purple-600); white-space:nowrap;}
+  .tipo-reclamo{background:#ffe2e2; color:#a11d2c;}
+  .tipo-queja{background:#fff3d6; color:#8a5a00;}
+  .estado-pendiente{background:#ffe2e2; color:#a11d2c;}
+  .estado-atendido{background:#d9f7ea; color:#0f6b43;}
+  .toolbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;}
+  .toolbar-actions{display:flex; gap:10px;}
+  .hidden{display:none;}
+  .empty{text-align:center; padding:60px 20px; color:var(--gray-500); background:#fff; border-radius:14px;}
+  .panel{background:#fff; border-radius:14px; padding:24px; margin-top:20px; box-shadow:0 6px 24px rgba(0,0,0,0.05);}
+  .panel h2{margin:0 0 6px; font-size:16px;}
+  .panel dl{display:grid; grid-template-columns:160px 1fr; gap:8px 14px; font-size:13.5px; margin:16px 0;}
+  .panel dt{color:var(--gray-500); font-weight:600;}
+  .panel dd{margin:0; white-space:pre-wrap;}
+  .panel textarea{width:100%; min-height:120px; border:1.5px solid var(--gray-300); border-radius:10px; padding:12px; font:inherit; margin:10px 0;}
+  .panel select{padding:10px 12px; border:1.5px solid var(--gray-300); border-radius:10px; font:inherit; margin-right:10px;}
+  .panel-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+  .save-msg{font-size:13px; font-weight:600; color:#0f6b43;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📕 NextFiber — Libro de Reclamaciones</h1>
+  <span><a href="leads.html">← Panel de registros</a></span>
+</header>
+
+<form class="gate" id="gate">
+  <p>Ingresa la clave de administrador (<code>ADMIN_TOKEN</code>) para ver los reclamos y quejas. La sesión se cierra al cerrar esta pestaña.</p>
+  <label for="token" class="sr-only">Clave de administrador</label>
+  <input type="password" id="token" placeholder="Clave de administrador" autocomplete="current-password" required>
+  <button type="submit">Entrar</button>
+  <p class="gate-error" id="gateError" role="alert"></p>
+</form>
+
+<div class="content hidden" id="content">
+  <div class="toolbar">
+    <span id="count"></span>
+    <div class="toolbar-actions">
+      <button type="button" id="reload">↻ Actualizar</button>
+      <button type="button" id="logout" class="secondary">Salir</button>
+    </div>
+  </div>
+  <div id="tableWrap"></div>
+  <div id="detailWrap"></div>
+</div>
+
+<script src="reclamos.js" defer></script>
+</body>
+</html>

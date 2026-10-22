@@ -1,0 +1,54 @@
+# ---------------------------------------------------------
+# Credenciales y variables de entorno (NUNCA subir)
+# ---------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+serviceAccount*.json
+
+# ---------------------------------------------------------
+# Base de datos con datos personales de clientes (NUNCA subir)
+# ---------------------------------------------------------
+backend/db/*.sqlite
+backend/db/*.sqlite-shm
+backend/db/*.sqlite-wal
+backend/db/*.sqlite-journal
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+
+# ---------------------------------------------------------
+# Dependencias y archivos generados
+# ---------------------------------------------------------
+node_modules/
+dist/
+build/
+coverage/
+*.log
+npm-debug.log*
+
+# ---------------------------------------------------------
+# Carpetas de respaldo y paquetes
+# ---------------------------------------------------------
+react-components/fix_bundle/
+react-components/seguido/
+*.zip
+
+# ---------------------------------------------------------
+# Notas internas (no publicar)
+# ---------------------------------------------------------
+CAMBIOS.md
+
+# ---------------------------------------------------------
+# Sistema operativo y editores
+# ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

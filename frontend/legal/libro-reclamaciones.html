@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libro de Reclamaciones | NextFiber</title>
+<link rel="icon" type="image/jpeg" href="../images/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="legal.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="tb-left">
+      <span>📞 Ventas: <a href="tel:+51945835216"><b>945 835 216</b></a></span>
+      <span>🎧 Soporte: <a href="tel:+51902175702"><b>902 175 702</b></a></span>
+      <span class="tb-address">📍 San Sebastián, Cusco</span>
+    </div>
+    <div class="tb-right">
+      <span>Lun–Vie 8:00–18:00 · Sáb 8:00–14:00</span>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap nav">
+    <a href="../index.html" class="logo" aria-label="NextFiber - inicio">
+      <img src="../images/logo-nextfiber.jpg" alt="NextFiber - Internet y TV por Fibra Óptica">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#inicio">Inicio</a></li>
+      <li><a href="../index.html#planes">Planes</a></li>
+      <li><a href="../index.html#registro">Regístrate</a></li>
+      <li><a href="../index.html#soporte">Soporte</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="../index.html#planes" id="contrataYaFallback" class="btn btn-liquid btn-sm">¡Contrata ya!</a>
+      <span
+        id="contrataYaWidget"
+        data-liquid-button
+        data-label="¡Contrata ya!"
+        data-href="../index.html#planes"
+        data-fallback-id="contrataYaFallback"
+        style="display:none;"
+      ></span>
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+
+<section class="legal-hero">
+  <div class="wrap">
+    <span class="eyebrow">Atención al consumidor</span>
+    <h1>Libro de Reclamaciones Virtual</h1>
+    <p>De acuerdo con el Código de Protección y Defensa del Consumidor (Ley N.° 29571) y el Reglamento del Libro de Reclamaciones (D.S. N.° 011-2011-PCM, modificado por el D.S. N.° 101-2022-PCM), GRUPO ANTEL E.I.R.L. (NextFiber) pone a tu disposición este Libro de Reclamaciones Virtual para que registres tu reclamo o queja.</p>
+  </div>
+</section>
+
+<section class="legal-body">
+  <div class="wrap">
+    <div class="legal-note">
+      <p style="margin:0"><b>Reclamo:</b> disconformidad relacionada a los productos o servicios contratados. <b>Queja:</b> disconformidad no relacionada a los productos o servicios, o malestar respecto a la atención al público. La formulación de un reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo para interponer una denuncia ante Indecopi. El proveedor debe darte respuesta a tu reclamo o queja en un plazo no mayor a 15 días hábiles, el cual es improrrogable.</p>
+    </div>
+
+    <form class="claim-form" id="claimForm" novalidate>
+      <fieldset>
+        <legend>1. Tipo de solicitud</legend>
+        <div class="radio-row">
+          <label><input type="radio" name="tipo" value="reclamo" checked> Reclamo</label>
+          <label><input type="radio" name="tipo" value="queja"> Queja</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Identificación del consumidor</legend>
+        <div class="field-row">
+          <div>
+            <label for="consumidor">Nombre completo *</label>
+            <input type="text" id="consumidor" name="consumidor" maxlength="120" required>
+          </div>
+          <div>
+            <label for="telefono">Teléfono / WhatsApp *</label>
+            <input type="tel" id="telefono" name="telefono" maxlength="20" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="tipo_documento">Tipo de documento *</label>
+            <select id="tipo_documento" name="tipo_documento" required>
+              <option value="DNI">DNI</option>
+              <option value="Carné de extranjería">Carné de extranjería</option>
+              <option value="Pasaporte">Pasaporte</option>
+            </select>
+          </div>
+          <div>
+            <label for="numero_documento">Número de documento *</label>
+            <input type="text" id="numero_documento" name="numero_documento" maxlength="20" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="domicilio">Domicilio</label>
+            <input type="text" id="domicilio" name="domicilio" maxlength="200">
+          </div>
+          <div>
+            <label for="correo">Correo electrónico * <span style="font-weight:400">(te enviamos una copia de tu reclamación)</span></label>
+            <input type="email" id="correo" name="correo" maxlength="120" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" id="es_menor_edad" name="es_menor_edad">
+          <label for="es_menor_edad">Soy menor de edad (se requieren los datos de un padre, madre o apoderado)</label>
+        </div>
+        <div class="field-row" id="apoderadoRow" style="display:none">
+          <div>
+            <label for="apoderado">Nombre del padre, madre o apoderado</label>
+            <input type="text" id="apoderado" name="apoderado" maxlength="120">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Identificación del bien contratado</legend>
+        <div class="field-row">
+          <div>
+            <label for="bien_contratado">Servicio o producto contratado *</label>
+            <input type="text" id="bien_contratado" name="bien_contratado" maxlength="200" placeholder="Ej. Plan Pro + TV" required>
+          </div>
+          <div>
+            <label for="fecha_contrato">Fecha de contratación</label>
+            <input type="date" id="fecha_contrato" name="fecha_contrato">
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="monto_reclamado">Monto reclamado (si aplica)</label>
+            <input type="text" id="monto_reclamado" name="monto_reclamado" maxlength="30" placeholder="S/ 0.00">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Detalle</legend>
+        <label for="detalle">Detalle del reclamo o la queja *</label>
+        <textarea id="detalle" name="detalle" maxlength="2000" required></textarea>
+        <label for="pedido" style="margin-top:14px">Pedido del consumidor *</label>
+        <textarea id="pedido" name="pedido" maxlength="1000" required placeholder="¿Qué solución solicitas?"></textarea>
+      </fieldset>
+
+      <div class="honeypot" aria-hidden="true">
+        <label for="sitio_web">No completar</label>
+        <input type="text" id="sitio_web" name="sitio_web" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button type="submit" class="btn btn-lime">Enviar reclamación</button>
+      <p class="form-msg" id="formMsg" role="alert"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="../index.html" class="logo" aria-label="NextFiber">
+          <img src="../images/logo-nextfiber-dark.jpg" alt="NextFiber - Internet y TV por Fibra Óptica">
+        </a>
+        <p>Internet y TV por fibra óptica 100% real. Tecnología GPON con velocidad simétrica y soporte local en Cusco y Puerto Maldonado.</p>
+        <div class="foot-social">
+          <a href="https://www.facebook.com/nextfiberperu/?locale=es_LA" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-7.5H16l.5-3h-3V8.5c0-.83.17-1.5 1.5-1.5H16.5V4.14C16.18 4.1 15.09 4 13.82 4 11.17 4 9.5 5.6 9.5 8.2v2.3H7v3h2.5V21h4Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.instagram.com/p/Cz_a6ztup5G/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8" fill="none"/><circle cx="17" cy="7" r="1.1" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/tag/nexrfiber" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 3v9.5a3.5 3.5 0 1 1-2.5-3.35V6.9A6 6 0 1 0 18 12.6V9.4c1.1.75 2.4 1.2 3.8 1.2V7.4c-2.1 0-3.8-1.65-3.8-3.7V3h-2Z" fill="currentColor"/></svg>
+          </a>
+          <a href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20quiero%20contratar%20un%20plan%20de%20internet%20por%20fibra%20%C3%B3ptica." aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.2-1.33A10 10 0 1 0 12 2Zm5.66 14.24c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.13.11-1.83-.11-.42-.14-.96-.31-1.66-.6-2.92-1.26-4.82-4.17-4.97-4.36-.14-.19-1.19-1.58-1.19-3.02 0-1.43.75-2.13 1.02-2.42.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.64.49.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.29.28-.13.56.17.28.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.19.7-.82.89-1.1.19-.28.37-.23.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36Z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Enlaces rápidos</h4>
+        <ul>
+          <li><a href="../index.html#planes">Planes de internet</a></li>
+          <li><a href="../index.html#tv">TV Digital</a></li>
+          <li><a href="../index.html#pagos">Formas de pago</a></li>
+          <li><a href="../index.html#soporte">Soporte técnico</a></li>
+          <li><a href="https://www.speedtest.net/es" target="_blank" rel="noopener noreferrer">Test de velocidad</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Atención al cliente</h4>
+        <ul>
+          <li>Ventas: <a href="tel:+51945835216"><b>945 835 216</b></a></li>
+          <li>Atención: <a href="tel:+51999994752"><b>999 994 752</b></a></li>
+          <li>Facturación: <a href="tel:+51998555093"><b>998 555 093</b></a></li>
+          <li>Soporte técnico: <a href="tel:+51902175702"><b>902 175 702</b></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Parrilla de canales</h4>
+        <ul>
+          <li><a href="../pdf/parrilla-canales-cusco.pdf" target="_blank" rel="noopener">Cusco (PDF)</a></li>
+          <li><a href="../pdf/parrilla-canales-puerto-maldonado.pdf" target="_blank" rel="noopener">Puerto Maldonado (PDF)</a></li>
+        </ul>
+      </div>
+      <div class="foot-col visit">
+        <h4>Visítanos</h4>
+        <p>La Victoria A-28,<br>San Sebastián — Cusco, Perú</p>
+        <p>Lun–Vie: 8:00 am–1:00 pm / 2:00 pm–6:00 pm<br>Sáb: 8:00 am–2:00 pm</p>
+        <p style="color:var(--gray-500); font-size:12.5px;">También en Puerto Maldonado, Madre de Dios.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GRUPO ANTEL E.I.R.L. (NextFiber) · RUC 20602947000 — Todos los derechos reservados.</span>
+      <div class="links">
+        <a href="libro-reclamaciones.html">Libro de reclamaciones</a>
+        <a href="terminos.html">Términos y condiciones</a>
+        <a href="privacidad.html">Política de privacidad</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/51945835216?text=Hola%20NextFiber%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20planes%20de%20internet." aria-label="Escr&iacute;benos por WhatsApp" target="_blank" rel="noopener">
+  <span class="wa-pill">
+    <img class="wa-avatar" src="../images/avatar-nextfiber-face.png" alt="">
+    <span class="wa-text">Chatea con nosotros</span>
+  </span>
+  <span class="wa-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.66 15L2 22l5.2-1.33A10 10 0 1 0 12 2Zm5.66 14.24c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.13.11-1.83-.11-.42-.14-.96-.31-1.66-.6-2.92-1.26-4.82-4.17-4.97-4.36-.14-.19-1.19-1.58-1.19-3.02 0-1.43.75-2.13 1.02-2.42.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.64.49.24.55.81 1.9.88 2.04.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.29.28-.13.56.17.28.75 1.24 1.62 2.01 1.11.99 2.04 1.3 2.32 1.44.28.14.44.12.6-.07.17-.19.7-.82.89-1.1.19-.28.37-.23.63-.14.26.09 1.65.78 1.93.92.28.14.47.21.54.33.07.12.07.68-.17 1.36Z"/></svg></span>
+</a>
+
+<script src="../js/script.js"></script>
+<script src="../js/liquid-button.widget.js" defer></script>
+<script src="../js/wa-float.js"></script>
+<script src="claim-form.js"></script>
+</body>
+</html>

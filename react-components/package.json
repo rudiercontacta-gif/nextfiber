@@ -1,0 +1,41 @@
+{
+  "name": "nextfiber-react-components",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Vitrina separada (React + TypeScript + Tailwind + shadcn) para componentes animados de NextFiber, como el botón de metal líquido. No reemplaza el sitio principal (frontend/), que sigue siendo HTML + CSS + JS puro.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "build:widget": "vite build --config vite.widget.config.ts",
+    "build:widget:tv": "vite build --config vite.widget.tv-carousel.config.ts",
+    "build:widget:moving-border": "vite build --config vite.widget.moving-border.config.ts",
+    "build:widgets": "npm run build:widget && npm run build:widget:tv && npm run build:widget:moving-border"
+  },
+  "dependencies": {
+    "@paper-design/shaders": "latest",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.436.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-css-injected-by-js": "^3.5.2"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}
