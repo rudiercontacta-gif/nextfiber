@@ -9,6 +9,33 @@ Facebook Messenger.
 - **Backend:** Node.js + Express + SQLite (`better-sqlite3`).
 - **Widgets animados:** React + TypeScript + Tailwind, compilados a un solo `.js` (carpeta `react-components/`).
 
+## Vista previa
+
+### Inicio
+![Inicio](docs/inicio.jpg)
+
+### Planes
+![Planes](docs/planes.jpg)
+
+### Verificación de cobertura
+![Cobertura](docs/cobertura.jpg)
+
+### Preguntas frecuentes
+![Preguntas frecuentes](docs/Preguntas.jpg)
+
+### Libro de Reclamaciones
+![Libro de Reclamaciones](docs/reclamos.jpg)
+
+## Qué hice y qué aprendí
+
+- Diseñé y programé el sitio completo: frontend en HTML, CSS y JavaScript puro, y backend en Node.js con Express y SQLite.
+- Validación de todos los formularios en el servidor, límite de envíos por conexión y campo trampa contra robots.
+- Protección contra XSS en el panel de administración y consultas SQL parametrizadas.
+- Panel de administración con clave comparada de forma segura y bloqueo tras intentos fallidos.
+- Integraciones con WhatsApp (Meta Cloud API), Gmail, Telegram y Facebook Messenger, con webhook verificado por firma.
+- Libro de Reclamaciones virtual con copia al consumidor por correo.
+- Widgets animados en React y TypeScript, compilados a un solo archivo JS.
+
 ## Estructura
 
 ```
