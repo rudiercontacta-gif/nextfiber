@@ -12,19 +12,19 @@ Facebook Messenger.
 ## Vista previa
 
 ### Inicio
-![Inicio](docs/inicio.jpg)
+![Inicio](docs/inicio.png)
 
 ### Planes
-![Planes](docs/planes.jpg)
+![Planes](docs/planes.png)
 
 ### Verificación de cobertura
-![Cobertura](docs/cobertura.jpg)
+![Cobertura](docs/cobertura.png)
 
 ### Preguntas frecuentes
-![Preguntas frecuentes](docs/Preguntas.jpg)
+![Preguntas frecuentes](docs/frecuentes.png)
 
 ### Libro de Reclamaciones
-![Libro de Reclamaciones](docs/reclamos.jpg)
+![Libro de Reclamaciones](docs/reclamos.png)
 
 ## Qué hice y qué aprendí
 
